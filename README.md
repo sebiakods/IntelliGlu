@@ -189,6 +189,7 @@ http://localhost:3000
 
 ---
 
+
 # Glucose Units
 
 Internally, IntelliGlu performs all calculations in **mg/dL** while displaying values in both **mg/dL** and **g/L** for convenience.
