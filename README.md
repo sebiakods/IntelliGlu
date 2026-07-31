@@ -36,12 +36,14 @@ Previously, glucose values above **400 mg/dL (4 g/L)** could incorrectly produce
 * `backend/app/rl/cql/inference.py`
 
 ---
+---
+
 # 📸 Application Screenshots
 
 ## Dashboard
 
 <p align="center">
-  <img src="docs/images/dashboard.png" width="95%">
+  <img src="docs/images/Dashboard.PNG" width="900">
 </p>
 
 ---
@@ -49,8 +51,7 @@ Previously, glucose values above **400 mg/dL (4 g/L)** could incorrectly produce
 ## Patient Management
 
 <p align="center">
-  <img src="docs/images/patients.png" width="48%">
-  <img src="docs/images/patient-details.png" width="48%">
+  <img src="docs/images/patients.PNG" width="900">
 </p>
 
 ---
@@ -58,8 +59,7 @@ Previously, glucose values above **400 mg/dL (4 g/L)** could incorrectly produce
 ## AI Recommendation Engine
 
 <p align="center">
-  <img src="docs/images/recommendation.png" width="48%">
-  <img src="docs/images/override.png" width="48%">
+  <img src="docs/images/recommandations.PNG" width="900">
 </p>
 
 ---
@@ -67,18 +67,34 @@ Previously, glucose values above **400 mg/dL (4 g/L)** could incorrectly produce
 ## Glucose Simulator
 
 <p align="center">
-  <img src="docs/images/simulator.png" width="48%">
-  <img src="docs/images/simulation-results.png" width="48%">
+  <img src="docs/images/similatorr.PNG" width="900">
 </p>
 
 ---
 
-## Analytics & Reports
+## Analytics
 
 <p align="center">
-  <img src="docs/images/analytics.png" width="48%">
-  <img src="docs/images/reports.png" width="48%">
+  <img src="docs/images/analytics.PNG" width="900">
 </p>
+
+---
+
+## Alerts
+
+<p align="center">
+  <img src="docs/images/Alerts.PNG" width="900">
+</p>
+
+---
+
+## Settings
+
+<p align="center">
+  <img src="docs/images/settings.PNG" width="900">
+</p>
+
+---
 ### Robust Model Loading
 
 The model loader now automatically detects the state dimension stored inside the trained checkpoint instead of relying on a fixed value.
