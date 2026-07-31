@@ -36,7 +36,49 @@ Previously, glucose values above **400 mg/dL (4 g/L)** could incorrectly produce
 * `backend/app/rl/cql/inference.py`
 
 ---
+# 📸 Application Screenshots
 
+## Dashboard
+
+<p align="center">
+  <img src="docs/images/dashboard.png" width="95%">
+</p>
+
+---
+
+## Patient Management
+
+<p align="center">
+  <img src="docs/images/patients.png" width="48%">
+  <img src="docs/images/patient-details.png" width="48%">
+</p>
+
+---
+
+## AI Recommendation Engine
+
+<p align="center">
+  <img src="docs/images/recommendation.png" width="48%">
+  <img src="docs/images/override.png" width="48%">
+</p>
+
+---
+
+## Glucose Simulator
+
+<p align="center">
+  <img src="docs/images/simulator.png" width="48%">
+  <img src="docs/images/simulation-results.png" width="48%">
+</p>
+
+---
+
+## Analytics & Reports
+
+<p align="center">
+  <img src="docs/images/analytics.png" width="48%">
+  <img src="docs/images/reports.png" width="48%">
+</p>
 ### Robust Model Loading
 
 The model loader now automatically detects the state dimension stored inside the trained checkpoint instead of relying on a fixed value.
