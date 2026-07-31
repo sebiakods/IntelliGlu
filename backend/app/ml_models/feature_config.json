@@ -1,0 +1,43 @@
+{
+  "state_dim": 26,
+  "n_actions": 6,
+  "hidden_layers": [512, 512, 512, 256],
+  "model_type": "CQL",
+  "action_labels": {
+    "0": "No Dose (0 U)",
+    "1": "Low (0-1 U)",
+    "2": "Low-Med (1-2.5 U)",
+    "3": "Medium (2.5-4 U)",
+    "4": "Med-High (4-6 U)",
+    "5": "High (>=6 U)"
+  },
+  "action_doses": {
+    "0": 0.0, "1": 0.5, "2": 1.5, "3": 3.0, "4": 5.0, "5": 8.0
+  },
+  "action_bin_edges": [1.0, 2.5, 4.0, 6.0],
+  "glucose_target_low": 140.0,
+  "glucose_target_high": 180.0,
+  "hypo_threshold": 70.0,
+  "severe_hyper_threshold": 250.0,
+  "state_columns": [
+    "GLUCOSE_MG_DL_NORM","HEART_RATE_BPM_NORM","SBP_MMHG_NORM","DBP_MMHG_NORM",
+    "RESP_RATE_PER_MIN_NORM","SPO2_PCT_NORM","TEMP_CELSIUS_NORM","HCO3_NORM",
+    "CHLORIDE_NORM","CREATININE_NORM","BUN_NORM","POTASSIUM_NORM","SODIUM_NORM",
+    "HEMOGLOBIN_NORM","WBC_NORM","URINE_ML_PER_H_NORM","AGE_YEARS_NORM",
+    "LOS_DAYS_NORM","HOUR_INDEX_NORM","GENDER_ENC","CARE_UNIT_ENC",
+    "GLUCOSE_DELTA","INSULIN_LAG_1","INSULIN_LAG_2","INSULIN_LAG_3",
+    "TIME_SINCE_LAST_DOSE_NORM"
+  ],
+  "mdp": {
+    "gamma": 0.99,
+    "n_nonzero_action_bins": 5,
+    "insulin_lag_steps": 3,
+    "delayed_reward_steps": 2
+  },
+  "training_metrics": {
+    "policy_agreement_pct": 59.07,
+    "severe_hypo_pct": 0.0,
+    "target_range_pct": 41.59,
+    "mean_q": 1.275
+  }
+}
