@@ -1,4 +1,21 @@
 # IntelliGlu v2 — AI-Powered ICU Glucose Management Platform
+<p align="center">
+  <img src="docs/images/intelliglu.PNG" width="100%">
+</p>
+
+<h1 align="center">IntelliGlu v2</h1>
+
+<p align="center">
+AI-powered Clinical Decision Support Platform for Intelligent ICU Glucose Monitoring and Personalized Insulin Dosing
+</p>
+
+<p align="center">
+<img src="https://img.shields.io/badge/Python-3.11-blue">
+<img src="https://img.shields.io/badge/FastAPI-Backend-009688">
+<img src="https://img.shields.io/badge/Next.js-15-black">
+<img src="https://img.shields.io/badge/TypeScript-5-blue">
+<img src="https://img.shields.io/badge/OfflineRL-CQL-success">
+</p>
 
 **IntelliGlu** is an AI-powered clinical decision support platform designed to assist healthcare professionals with personalized insulin dosing in Intensive Care Units (ICUs). It combines **Offline Reinforcement Learning (Conservative Q-Learning)** with a modern web interface to generate safe, explainable insulin recommendations from patient glucose measurements.
 
