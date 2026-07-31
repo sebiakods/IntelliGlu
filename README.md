@@ -1,12 +1,11 @@
-# IntelliGlu v2 — AI-Powered ICU Glucose Management Platform
 <p align="center">
   <img src="docs/images/intelliglu.PNG" width="100%">
 </p>
 
-<h1 align="center">IntelliGlu v2</h1>
+<h1 align="center">IntelliGlu</h1>
 
 <p align="center">
-AI-powered Clinical Decision Support Platform for Intelligent ICU Glucose Monitoring and Personalized Insulin Dosing
+Clinical Decision Support System for ICU Glucose Monitoring and Insulin Dose Recommendation
 </p>
 
 <p align="center">
@@ -14,53 +13,104 @@ AI-powered Clinical Decision Support Platform for Intelligent ICU Glucose Monito
 <img src="https://img.shields.io/badge/FastAPI-Backend-009688">
 <img src="https://img.shields.io/badge/Next.js-15-black">
 <img src="https://img.shields.io/badge/TypeScript-5-blue">
-<img src="https://img.shields.io/badge/OfflineRL-CQL-success">
+<img src="https://img.shields.io/badge/CQL-OfflineRL-success">
 </p>
-
-**IntelliGlu** is an AI-powered clinical decision support platform designed to assist healthcare professionals with personalized insulin dosing in Intensive Care Units (ICUs). It combines **Offline Reinforcement Learning (Conservative Q-Learning)** with a modern web interface to generate safe, explainable insulin recommendations from patient glucose measurements.
-
-> **Research Project:** Personalized insulin dosing using Offline Reinforcement Learning.
 
 ---
 
-## ✨ Highlights
+# Overview
 
-*  Conservative Q-Learning (CQL) recommendation engine
-*  Interactive patient dashboard and glucose visualization
-*  Clinician review, acceptance, or manual override of AI recommendations
-*  Real-time glucose simulation
-*  Safety-oriented dosing logic
-*  FastAPI backend with a modern Next.js + Electron frontend
-*  Docker-ready backend architecture
+IntelliGlu is a research project that explores the use of **Offline Reinforcement Learning (Conservative Q-Learning)** to assist insulin dosing in Intensive Care Units (ICUs).
+
+The application combines a **FastAPI backend**, a **Next.js + Electron frontend**, and a trained CQL model to generate insulin dose recommendations from patient glucose measurements. Clinicians can review every recommendation before accepting it or overriding it manually.
+
+The objective of the project is to study how reinforcement learning can support clinical decision-making while keeping the clinician in control.
+
+---
+
+# Features
+
+- Offline Reinforcement Learning (Conservative Q-Learning) recommendation engine
+- FastAPI REST API
+- Interactive patient dashboard
+- Patient management (CRUD)
+- Glucose monitoring
+- Real-time glucose simulator
+- Recommendation review and manual override
+- Safety rules for insulin dosing
+- Analytics and reporting
+- Desktop application with Electron
+- Docker support
+
+---
+
+# System Architecture
+
+```
+                Next.js + Electron
+                       │
+                       ▼
+                 FastAPI REST API
+                       │
+        ┌──────────────┼──────────────┐
+        ▼              ▼              ▼
+   Patient Data   RL Inference   Analytics
+                       │
+                       ▼
+          Conservative Q-Learning Model
+                       │
+                       ▼
+                Safety Validation
+                       │
+                       ▼
+          Recommended Insulin Dose
+```
 
 ---
 
 # What's New in v2
 
-This release focuses on improving the reliability of the recommendation engine while expanding the clinical workflow.
+Version 2 introduces a complete backend architecture and several improvements to the recommendation workflow.
 
-## 🔧 Improvements
+### Recommendation Engine
 
-### Accurate High-Glucose Recommendations
+- Fixed the high-glucose recommendation logic.
+- Frontend and backend now use the same inference rules.
+- Improved consistency for glucose values above 400 mg/dL.
 
-The CQL heuristic has been corrected to properly handle extremely high glucose values.
+### Model Loading
 
-Previously, glucose values above **400 mg/dL (4 g/L)** could incorrectly produce a **0 U insulin recommendation** due to a frontend heuristic inconsistency. The frontend and backend now share the same decision logic, ensuring consistent recommendations.
+- The backend automatically detects the state dimension stored in the trained model.
+- Removed the dependency on hardcoded feature sizes.
 
-**Updated components**
+### Backend
 
-* `frontend/lib/simulator.ts`
-* `backend/app/rl/cql/inference.py`
+The FastAPI backend now provides endpoints for:
+
+- Patient management
+- Recommendations
+- Simulation
+- Reports
+- Analytics
+- Monitoring
+- Settings
+
+### Frontend
+
+- Redesigned dashboard
+- New patient management workflow
+- Recommendation page connected to the backend
+- Simulator integrated with recommendations
+- Improved navigation and UI consistency
 
 ---
----
 
-# 📸 Application Screenshots
+# Screenshots
 
 ## Dashboard
 
 <p align="center">
-  <img src="docs/images/Dashboard.PNG" width="900">
+<img src="docs/images/Dashboard.PNG" width="900">
 </p>
 
 ---
@@ -68,15 +118,15 @@ Previously, glucose values above **400 mg/dL (4 g/L)** could incorrectly produce
 ## Patient Management
 
 <p align="center">
-  <img src="docs/images/patients.PNG" width="900">
+<img src="docs/images/patients.PNG" width="900">
 </p>
 
 ---
 
-## AI Recommendation Engine
+## Recommendation Engine
 
 <p align="center">
-  <img src="docs/images/recommandations.PNG" width="900">
+<img src="docs/images/recommandations.PNG" width="900">
 </p>
 
 ---
@@ -84,7 +134,7 @@ Previously, glucose values above **400 mg/dL (4 g/L)** could incorrectly produce
 ## Glucose Simulator
 
 <p align="center">
-  <img src="docs/images/similatorr.PNG" width="900">
+<img src="docs/images/similatorr.PNG" width="900">
 </p>
 
 ---
@@ -92,7 +142,7 @@ Previously, glucose values above **400 mg/dL (4 g/L)** could incorrectly produce
 ## Analytics
 
 <p align="center">
-  <img src="docs/images/analytics.PNG" width="900">
+<img src="docs/images/analytics.PNG" width="900">
 </p>
 
 ---
@@ -100,7 +150,7 @@ Previously, glucose values above **400 mg/dL (4 g/L)** could incorrectly produce
 ## Alerts
 
 <p align="center">
-  <img src="docs/images/Alerts.PNG" width="900">
+<img src="docs/images/Alerts.PNG" width="900">
 </p>
 
 ---
@@ -108,101 +158,34 @@ Previously, glucose values above **400 mg/dL (4 g/L)** could incorrectly produce
 ## Settings
 
 <p align="center">
-  <img src="docs/images/settings.PNG" width="900">
+<img src="docs/images/settings.PNG" width="900">
 </p>
-
----
-### Robust Model Loading
-
-The model loader now automatically detects the state dimension stored inside the trained checkpoint instead of relying on a fixed value.
-
-This prevents incompatibilities when loading models trained with different feature sets.
-
-**Updated component**
-
-* `backend/app/rl/cql/model_loader.py`
-
----
-
-### Complete Patient Management API
-
-The patient and recommendation modules have been expanded from placeholders into fully functional REST APIs.
-
-Features include:
-
-* Patient CRUD operations
-* Recommendation retrieval
-* Recommendation application
-* Integration with the CQL inference engine
-
----
-
-## 🚀 New Features
-
-### Dual Patient Management
-
-The application now separates:
-
-* Built-in dataset patients
-* Newly created patients
-
-New patients are stored independently using **localStorage**, preserving the original dataset.
-
----
-
-### Interactive Dashboard
-
-Select any patient directly from the dashboard to instantly view:
-
-* Current glucose
-* AI-generated insulin recommendation
-* Supporting information
-
----
-
-### Simulator → Recommendation Workflow
-
-Simulation results can now be transferred directly to the Recommendations page.
-
-Clinicians can:
-
-* Review the proposed dose
-* Accept the recommendation
-* Override it manually
-* Select a different insulin dose when needed
-
----
-
-### Improved User Experience
-
-The interface has been redesigned with:
-
-* DM Sans typography
-* Modern color system
-* Improved badges
-* Status indicators
-* Smoother animations
-* Better overall consistency
 
 ---
 
 # Technology Stack
 
-### Backend
+## Backend
 
-* FastAPI
-* Python
-* Offline Reinforcement Learning (CQL)
-* REST API
-* Docker
+- Python
+- FastAPI
+- Pydantic
+- Uvicorn
+- Docker
 
-### Frontend
+## Machine Learning
 
-* Next.js
-* TypeScript
-* React
-* Electron
-* Tailwind CSS
+- Conservative Q-Learning (CQL)
+- PyTorch
+- Offline Reinforcement Learning
+
+## Frontend
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Electron
 
 ---
 
@@ -210,29 +193,26 @@ The interface has been redesigned with:
 
 ```text
 backend/
-├── api/
-├── core/
-├── db/
-├── rl/
-│   ├── cql/
-│   ├── ope/
-│   └── safety/
-├── services/
-└── schemas/
+├── app/
+│   ├── api/
+│   ├── core/
+│   ├── db/
+│   ├── ml_models/
+│   ├── rl/
+│   │   ├── cql/
+│   │   ├── ope/
+│   │   └── safety/
+│   ├── schemas/
+│   ├── services/
+│   └── main.py
+└── docker-compose.yml
 
 frontend/
 ├── app/
-│   ├── dashboard/
-│   ├── patients/
-│   ├── recommendations/
-│   ├── simulator/
-│   ├── analytics/
-│   ├── reports/
-│   └── settings/
 ├── components/
 ├── hooks/
-├── services/
 ├── lib/
+├── services/
 └── electron/
 ```
 
@@ -244,19 +224,31 @@ frontend/
 
 ```bash
 cd backend/app
+
 pip install -r requirements.txt
+
 uvicorn main:app --reload --port 8000
 ```
+
+Backend:
+
+```
+http://localhost:8000
+```
+
+---
 
 ## Frontend
 
 ```bash
 cd frontend
+
 npm install
+
 npm run dev
 ```
 
-The frontend will be available at:
+Frontend:
 
 ```
 http://localhost:3000
@@ -264,18 +256,43 @@ http://localhost:3000
 
 ---
 
-
 # Glucose Units
 
-Internally, IntelliGlu performs all calculations in **mg/dL** while displaying values in both **mg/dL** and **g/L** for convenience.
+Internally, the recommendation model operates in **mg/dL**.
 
-| Glucose           | Expected Recommendation |
-| ----------------- | ----------------------- |
-| 300 mg/dL (3 g/L) | Medium-High (4–6 U)     |
-| 400 mg/dL (4 g/L) | High (≥ 6 U)            |
+For usability, the interface displays glucose values in both:
+
+- mg/dL
+- g/L
+
+| Glucose | Typical Recommendation |
+|----------|------------------------|
+| 300 mg/dL (3 g/L) | 4–6 U |
+| 400 mg/dL (4 g/L) | ≥ 6 U |
 
 ---
 
-# Vision
+# Why IntelliGlu?
 
-IntelliGlu aims to bridge cutting-edge Offline Reinforcement Learning research with practical clinical decision support. The long-term goal is to provide transparent, reliable, and safety-aware AI assistance that complements clinician expertise rather than replacing it.
+This project was developed to investigate how Offline Reinforcement Learning can be applied to insulin dosing using retrospective ICU data.
+
+Rather than replacing clinical judgment, IntelliGlu provides recommendations that clinicians can inspect, accept, or modify before administration.
+
+The project combines machine learning with rule-based safety checks to encourage safe and explainable recommendations.
+
+---
+
+# Future Improvements
+
+- Integration with hospital databases
+- Authentication and user roles
+- Additional reinforcement learning algorithms
+- Explainable AI visualizations
+- Model retraining pipeline
+- Deployment to cloud infrastructure
+
+---
+
+# License
+
+This repository was developed for research and educational purposes.
