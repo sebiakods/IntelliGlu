@@ -67,7 +67,23 @@ The objective of the project is to study how reinforcement learning can support 
 ```
 
 ---
+---
 
+# Model Evaluation & Results
+
+The recommendation engine was evaluated offline against a held-out cohort from MIMIC-III (~146,000 transitions, ~10,000 ICU stays), comparing two offline RL algorithms: **BCQ** and **CQL**.
+
+| Metric | BCQ | CQL |
+|---|---|---|
+| Off-Policy Value Estimate (WIS) | lower | **higher** |
+| Clinician Agreement Rate | lower | **higher** |
+| Safety Violation Rate | higher | **lower** |
+
+CQL was selected as the production model due to more conservative, clinically safer dosing behavior — a critical requirement when the policy cannot be validated through live exploration.
+
+Evaluation also included subgroup analysis (by glycemic severity band) to check the policy did not systematically under/over-treat specific patient groups.
+
+> Full methodology (MDP formulation, reward shaping, off-policy evaluation) is documented in the accompanying thesis: *Offline Reinforcement Learning for Personalized Insulin Dosing in ICU*.
 # What's New in v2
 
 Version 2 introduces a complete backend architecture and several improvements to the recommendation workflow.
